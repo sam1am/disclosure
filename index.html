@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Disclosure Countdown</title>
+    <style>
+        body {
+            background: linear-gradient(to bottom, #4b0082, #006666);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        h1 {
+            color: #ffffff;
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .countdown {
+            font-size: 64px;
+            font-weight: bold;
+            color: #ffffff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>👽 Countdown to Alien Disclosure 🛸</h1>
+        <div class="countdown" id="countdown"></div>
+    </div>
+
+    <script>
+        function startCountdown() {
+            var countdownElement = document.getElementById("countdown");
+            var days = 13;
+            var hours = 23;
+            var minutes = 59;
+            var seconds = 59;
+
+            function updateCountdown() {
+                countdownElement.textContent = days + "d " + hours + "h " + minutes + "m " + seconds + "s";
+
+                if (seconds > 0) {
+                    seconds--;
+                } else {
+                    if (minutes > 0) {
+                        minutes--;
+                        seconds = 59;
+                    } else {
+                        if (hours > 0) {
+                            hours--;
+                            minutes = 59;
+                            seconds = 59;
+                        } else {
+                            if (days > 0) {
+                                days--;
+                                hours = 23;
+                                minutes = 59;
+                                seconds = 59;
+                            } else {
+                                // Reset the countdown
+                                days = 13;
+                                hours = 23;
+                                minutes = 59;
+                                seconds = 59;
+                            }
+                        }
+                    }
+                }
+            }
+
+            updateCountdown();
+
+            var countdownInterval = setInterval(updateCountdown, 1000);
+
+            setTimeout(function () {
+                clearInterval(countdownInterval);
+                startCountdown();
+            }, 3000);
+        }
+
+        startCountdown();
+    </script>
+</body>
+
+</html>
